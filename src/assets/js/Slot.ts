@@ -53,7 +53,7 @@ export default class Slot {
    */
   constructor(
     {
-      maxReelItems = 30,
+      maxReelItems = 50,
       removeWinner = true,
       reelContainerSelector,
       onSpinStart,
@@ -78,10 +78,10 @@ export default class Slot {
         // Here we transform the reel to move up and stop at the top of last item
         // "(Number of item - 1) * height of reel item" of wheel is the amount of pixel to move up
         // 7.5rem * 16 = 120px, which equals to reel item height
-        { transform: `translateY(-${(this.maxReelItems - 1) * (7.5 * 16)}px)`, filter: 'blur(0)' }
+        { transform: `translateY(-${(this.maxReelItems - 1) * (11 * 16)}px)`, filter: 'blur(0)' }
       ],
       {
-        duration: this.maxReelItems * 100, // 100ms for 1 item
+        duration: this.maxReelItems * 150, // 100ms for 1 item
         easing: 'ease-in-out',
         iterations: 1
       }

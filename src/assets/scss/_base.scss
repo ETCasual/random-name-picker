@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap');
 
+@font-face {
+  font-family: tungsten;
+  src: url(@fonts/tungsten.ttf);
+}
+
 *:not(input, textarea, select) {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -14,6 +19,7 @@
 
 html,
 body {
+  overflow: hidden;
   padding: 0;
   margin: 0;
   font-size: 16px;
@@ -40,14 +46,6 @@ body {
 }
 
 .theme--red {
-  background: linear-gradient(
-    240deg,
-    $color-red-step1 0.13%,
-    $color-red-step2 26.19%,
-    $color-red-step3 52.6%,
-    $color-red-step4 79.08%,
-    $color-red-step5 100%
-  );
   color: $color-text-light;
 }
 
@@ -68,9 +66,14 @@ body {
   @include flex-center;
   padding: 3.125rem 0;
   width: 100%;
-  max-width: $screen-xl;
+  max-width: 2560px;
+  min-width: 2560px;
+  min-height: 1024px;
+  max-height: 1024px;
   flex: 1 1 0;
-  min-height: min-content;
+  background: url('https://ywkl-image-storage.s3.ap-southeast-1.amazonaws.com/bg.jpg');
+  background-size: 90%;
+  background-position: center;
 }
 
 .footer {

@@ -39,8 +39,14 @@ module.exports = {
           to: 'assets/images/touch-icons',
           globOptions: { ignore: ['**/.DS_Store'] }
         },
-        { from: path.resolve(__dirname, '../src/assets/images/favicon.ico'), to: 'assets/images/favicon.ico' },
-        { from: path.resolve(__dirname, '../src/manifest.json'), to: 'manifest.json' }
+        {
+          from: path.resolve(__dirname, '../src/assets/images/favicon.ico'),
+          to: 'assets/images/favicon.ico'
+        },
+        {
+          from: path.resolve(__dirname, '../src/manifest.json'),
+          to: 'manifest.json'
+        }
       ]
     }),
     new HtmlWebpackPlugin({
@@ -66,10 +72,7 @@ module.exports = {
     rules: [
       {
         test: /\.pug(\?.*)?$/,
-        use: [
-          'html-loader',
-          'pug-html-loader'
-        ]
+        use: ['html-loader', 'pug-html-loader']
       },
       {
         test: /\.(html|htm)(\?.*)?$/,
@@ -77,9 +80,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|ico|webp)(\?.*)?$/,
-        exclude: [
-          path.resolve(__dirname, '../src/assets/fonts')
-        ],
+        exclude: [path.resolve(__dirname, '../src/assets/fonts')],
         type: 'asset/resource',
         generator: {
           filename: 'assets/images/[name].[hash:8][ext]'
@@ -98,9 +99,7 @@ module.exports = {
         generator: {
           filename: 'assets/fonts/[name].[hash:8][ext]'
         },
-        exclude: [
-          path.resolve(__dirname, '../src/assets/images')
-        ]
+        exclude: [path.resolve(__dirname, '../src/assets/images')]
       }
     ]
   }

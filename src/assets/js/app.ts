@@ -1,6 +1,6 @@
 import confetti from 'canvas-confetti';
 import Slot from '@js/Slot';
-import SoundEffects from '@js/SoundEffects';
+// import SoundEffects from '@js/SoundEffects';
 
 // Initialize slot machine
 (() => {
@@ -15,7 +15,7 @@ import SoundEffects from '@js/SoundEffects';
   const confettiCanvas = document.getElementById('confetti-canvas') as HTMLCanvasElement | null;
   const nameListTextArea = document.getElementById('name-list') as HTMLTextAreaElement | null;
   const removeNameFromListCheckbox = document.getElementById('remove-from-list') as HTMLInputElement | null;
-  const enableSoundCheckbox = document.getElementById('enable-sound') as HTMLInputElement | null;
+  // const enableSoundCheckbox = document.getElementById('enable-sound') as HTMLInputElement | null;
 
   // Graceful exit if necessary elements are not found
   if (!(
@@ -30,7 +30,7 @@ import SoundEffects from '@js/SoundEffects';
     && confettiCanvas
     && nameListTextArea
     && removeNameFromListCheckbox
-    && enableSoundCheckbox
+    // && enableSoundCheckbox
   )) {
     console.error('One or more Element ID is invalid. This is possibly a bug.');
     return;
@@ -41,8 +41,8 @@ import SoundEffects from '@js/SoundEffects';
     return;
   }
 
-  const soundEffects = new SoundEffects();
-  const MAX_REEL_ITEMS = 40;
+  // const soundEffects = new SoundEffects();
+  const MAX_REEL_ITEMS = 50;
   const CONFETTI_COLORS = ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'];
   let confettiAnimationId;
 
@@ -82,14 +82,14 @@ import SoundEffects from '@js/SoundEffects';
     stopWinningAnimation();
     drawButton.disabled = true;
     settingsButton.disabled = true;
-    soundEffects.spin((MAX_REEL_ITEMS - 1) / 10);
+    // soundEffects.spin((MAX_REEL_ITEMS - 1) / 10);
   };
 
   /**  Functions to be trigger after spinning */
   const onSpinEnd = async () => {
     confettiAnimation();
     sunburstSvg.style.display = 'block';
-    await soundEffects.win();
+    // await soundEffects.win();
     drawButton.disabled = false;
     settingsButton.disabled = false;
   };
@@ -107,7 +107,7 @@ import SoundEffects from '@js/SoundEffects';
   const onSettingsOpen = () => {
     nameListTextArea.value = slot.names.length ? slot.names.join('\n') : '';
     removeNameFromListCheckbox.checked = slot.shouldRemoveWinnerFromNameList;
-    enableSoundCheckbox.checked = !soundEffects.mute;
+    // enableSoundCheckbox.checked = !soundEffects.mute;
     settingsWrapper.style.display = 'block';
   };
 
@@ -155,7 +155,7 @@ import SoundEffects from '@js/SoundEffects';
       ? nameListTextArea.value.split(/\n/).filter((name) => Boolean(name.trim()))
       : [];
     slot.shouldRemoveWinnerFromNameList = removeNameFromListCheckbox.checked;
-    soundEffects.mute = !enableSoundCheckbox.checked;
+    // soundEffects.mute = !enableSoundCheckbox.checked;
     onSettingsClose();
   });
 

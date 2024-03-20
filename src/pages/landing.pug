@@ -16,14 +16,13 @@ include ../mixins/icons
 
     .slot
       .slot__outer
-        .slot__inner
-          .slot__shadow
+        .slot__inner 
           #reel.reel
 
       #sunburst.sunburst
         img(src="~@images/sunburst.svg" alt="sunburst")
 
-    button#draw-button.solid-button Draw
+    button#draw-button.solid-button Draw winner
 
   #settings.settings
     #settings-panel.settings__panel
@@ -39,11 +38,11 @@ include ../mixins/icons
             input(type="checkbox" checked="true" id="remove-from-list")
             span.slider
 
-        div.input-group.input-group--2-column
-          label.input-label(for="enable-sound") Enable sound effect
-          label.input--switch
-            input(type="checkbox" checked="true" id="enable-sound")
-            span.slider
+        //- div.input-group.input-group--2-column
+        //-   label.input-label(for="enable-sound") Enable sound effect
+        //-   label.input--switch
+        //-     input(type="checkbox" checked="true" id="enable-sound")
+        //-     span.slider
       div.settings__panel__group
         button#settings-save.solid-button.solid-button Save
         button#settings-close.solid-button.solid-button--danger Discard and close
