@@ -1,11 +1,12 @@
-include ../mixins/icons
+include ../mixins/icons 
 
 .main
-  .control-group
-    button#fullscreen-button.icon-button.icon-button--small
-      +svg-icon.red.big(svg-icon-name='fullscreen')
-    button#settings-button.icon-button.icon-button--small
-      +svg-icon.red.big(svg-icon-name='settings')
+  img.bg-img(src="https://ywkl-image-storage.s3.ap-southeast-1.amazonaws.com/bg.jpg" alt="bg")
+  //- .control-group
+  //-   button#fullscreen-button.icon-button.icon-button--small
+  //-     +svg-icon.red.big(svg-icon-name='fullscreen')
+  //-   button#settings-button.icon-button.icon-button--small
+  //-     +svg-icon.red.big(svg-icon-name='settings')
 
   canvas#confetti-canvas.confetti
 
@@ -22,7 +23,7 @@ include ../mixins/icons
       #sunburst.sunburst
         img(src="~@images/sunburst.svg" alt="sunburst")
 
-    button#draw-button.solid-button Draw winner
+    //- button#draw-button.solid-button Draw winner
 
   #settings.settings
     #settings-panel.settings__panel
@@ -47,3 +48,4 @@ include ../mixins/icons
         button#settings-save.solid-button.solid-button Save
         button#settings-close.solid-button.solid-button--danger Discard and close
 
+.hidden a

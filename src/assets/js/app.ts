@@ -4,9 +4,10 @@ import Slot from '@js/Slot';
 
 // Initialize slot machine
 (() => {
-  const drawButton = document.getElementById('draw-button') as HTMLButtonElement | null;
-  const fullscreenButton = document.getElementById('fullscreen-button') as HTMLButtonElement | null;
-  const settingsButton = document.getElementById('settings-button') as HTMLButtonElement | null;
+  const drawButton = document.getElementById('lucky-draw') as HTMLButtonElement | null;
+  // eslint-disable-next-line max-len
+  // const fullscreenButton = document.getElementById('fullscreen-button') as HTMLButtonElement | null;
+  // const settingsButton = document.getElementById('settings-button') as HTMLButtonElement | null;
   const settingsWrapper = document.getElementById('settings') as HTMLDivElement | null;
   const settingsContent = document.getElementById('settings-panel') as HTMLDivElement | null;
   const settingsSaveButton = document.getElementById('settings-save') as HTMLButtonElement | null;
@@ -20,8 +21,8 @@ import Slot from '@js/Slot';
   // Graceful exit if necessary elements are not found
   if (!(
     drawButton
-    && fullscreenButton
-    && settingsButton
+    // && fullscreenButton
+    // && settingsButton
     && settingsWrapper
     && settingsContent
     && settingsSaveButton
@@ -81,7 +82,7 @@ import Slot from '@js/Slot';
   const onSpinStart = () => {
     stopWinningAnimation();
     drawButton.disabled = true;
-    settingsButton.disabled = true;
+    // settingsButton.disabled = true;
     // soundEffects.spin((MAX_REEL_ITEMS - 1) / 10);
   };
 
@@ -91,7 +92,7 @@ import Slot from '@js/Slot';
     sunburstSvg.style.display = 'block';
     // await soundEffects.win();
     drawButton.disabled = false;
-    settingsButton.disabled = false;
+    // settingsButton.disabled = false;
   };
 
   /** Slot instance */
@@ -130,24 +131,24 @@ import Slot from '@js/Slot';
   // Hide fullscreen button when it is not supported
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore - for older browsers support
-  if (!(document.documentElement.requestFullscreen && document.exitFullscreen)) {
-    fullscreenButton.remove();
-  }
+  // if (!(document.documentElement.requestFullscreen && document.exitFullscreen)) {
+  //   fullscreenButton.remove();
+  // }
 
   // Click handler for "Fullscreen" button
-  fullscreenButton.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      return;
-    }
+  // fullscreenButton.addEventListener('click', () => {
+  //   if (!document.fullscreenElement) {
+  //     document.documentElement.requestFullscreen();
+  //     return;
+  //   }
 
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  });
+  //   if (document.exitFullscreen) {
+  //     document.exitFullscreen();
+  //   }
+  // });
 
   // Click handler for "Settings" button
-  settingsButton.addEventListener('click', onSettingsOpen);
+  // settingsButton.addEventListener('click', onSettingsOpen);
 
   // Click handler for "Save" button for setting page
   settingsSaveButton.addEventListener('click', () => {

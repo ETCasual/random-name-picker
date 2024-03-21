@@ -1,7 +1,10 @@
-#lucky-draw {
+#lucky-draw {position: fixed;
+  top: 0!important;
+  left:0 !important;
   width: 100%;
+  min-height: 100dvh;
   text-align: center;
-  position: relative;
+  // position: relative;
   z-index: $z-index-lucky-draw; // make sure contents are on top of confetting
 }
 
@@ -41,7 +44,7 @@
 
 .slot {
   position: absolute;
-  top: 32%;
+  top: 35.5%;
   left: 51.75%;
   transform: translate(-50%, -20%);
 
