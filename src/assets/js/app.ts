@@ -43,7 +43,7 @@ import Slot from '@js/Slot';
   }
 
   // const soundEffects = new SoundEffects();
-  const MAX_REEL_ITEMS = 50;
+  const MAX_REEL_ITEMS = 40;
   const CONFETTI_COLORS = ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'];
   let confettiAnimationId;
 
@@ -55,14 +55,17 @@ import Slot from '@js/Slot';
 
   /** Triggers cconfeetti animation until animation is canceled */
   const confettiAnimation = () => {
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-    const confettiScale = Math.max(0.5, Math.min(1, windowWidth / 1100));
+    // eslint-disable-next-line max-len
+    // const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+
+    // const confettiScale = Math.max(0.5, 2);
+    const confettiScale = 1.75;
 
     customConfetti({
       particleCount: 1,
-      gravity: 0.8,
-      spread: 90,
-      origin: { y: 0.6 },
+      gravity: 0.4,
+      spread: 360,
+      origin: { y: 0.5 },
       colors: [CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)]],
       scalar: confettiScale
     });
@@ -155,7 +158,7 @@ import Slot from '@js/Slot';
     slot.names = nameListTextArea.value
       ? nameListTextArea.value.split(/\n/).filter((name) => Boolean(name.trim()))
       : [];
-    slot.shouldRemoveWinnerFromNameList = removeNameFromListCheckbox.checked;
+    slot.shouldRemoveWinnerFromNameList = true;
     // soundEffects.mute = !enableSoundCheckbox.checked;
     onSettingsClose();
   });
