@@ -154,14 +154,14 @@ import Slot from '@js/Slot';
   // settingsButton.addEventListener('click', onSettingsOpen);
 
   // Click handler for "Save" button for setting page
-  settingsSaveButton.addEventListener('click', () => {
-    slot.names = nameListTextArea.value
-      ? nameListTextArea.value.split(/\n/).filter((name) => Boolean(name.trim()))
-      : [];
-    slot.shouldRemoveWinnerFromNameList = true;
-    // soundEffects.mute = !enableSoundCheckbox.checked;
-    onSettingsClose();
-  });
+  // settingsSaveButton.addEventListener('click', () => {
+  //   slot.names = nameListTextArea.value
+  //     ? nameListTextArea.value.split(/\n/).filter((name) => Boolean(name.trim()))
+  //     : [];
+  //   slot.shouldRemoveWinnerFromNameList = true;
+  //   // soundEffects.mute = !enableSoundCheckbox.checked;
+  //   onSettingsClose();
+  // });
 
   // Click handler for "Discard and close" button for setting page
   settingsCloseButton.addEventListener('click', onSettingsClose);

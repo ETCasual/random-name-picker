@@ -28,8 +28,11 @@ export default class Slot {
   /** Maximum item inside a reel */
   private maxReelItems: NonNullable<SlotConfigurations['maxReelItems']>;
 
+  /** whether should retrigger */
+  private disabled: boolean;
+
   /** Whether winner should be removed from name list */
-  private shouldRemoveWinner: NonNullable<SlotConfigurations['removeWinner']>;
+  private shouldRemoveWinner:true;
 
   /** Reel animation object instance */
   private reelAnimation?: Animation;
@@ -54,7 +57,6 @@ export default class Slot {
   constructor(
     {
       maxReelItems = 50,
-      removeWinner = true,
       reelContainerSelector,
       onSpinStart,
       onSpinEnd,
@@ -65,10 +67,11 @@ export default class Slot {
     this.havePreviousWinner = false;
     this.reelContainer = document.querySelector(reelContainerSelector);
     this.maxReelItems = maxReelItems;
-    this.shouldRemoveWinner = removeWinner;
+    this.shouldRemoveWinner = true;
     this.onSpinStart = onSpinStart;
     this.onSpinEnd = onSpinEnd;
     this.onNameListChanged = onNameListChanged;
+    this.disabled = false;
 
     // Create reel animation
     this.reelAnimation = this.reelContainer?.animate(
@@ -116,14 +119,6 @@ export default class Slot {
     return this.nameList;
   }
 
-  /**
-   * Setter for shouldRemoveWinner
-   * @param removeWinner  Whether the winner should be removed from name list
-   */
-  set shouldRemoveWinnerFromNameList(removeWinner: boolean) {
-    this.shouldRemoveWinner = removeWinner;
-  }
-
   /** Getter for shouldRemoveWinner */
   get shouldRemoveWinnerFromNameList(): boolean {
     return this.shouldRemoveWinner;
@@ -156,6 +151,8 @@ export default class Slot {
    * @returns Whether the spin is completed successfully
    */
   public async spin(): Promise<boolean> {
+    if (this.disabled) return false;
+    this.disabled = true;
     if (!this.nameList.length) {
       console.error('Name List is empty. Cannot start spinning.');
       return false;
@@ -214,6 +211,8 @@ export default class Slot {
     // Fix issue for animatin not playing after the initial play on Safari
     reelAnimation.finish();
 
+    // console.info('reelContainer', reelContainer.children);
+
     Array.from(reelContainer.children)
       .slice(0, reelContainer.children.length - 1)
       .forEach((element) => element.remove());
@@ -222,6 +221,7 @@ export default class Slot {
 
     if (this.onSpinEnd) {
       this.onSpinEnd();
+      this.disabled = false;
     }
     return true;
   }
